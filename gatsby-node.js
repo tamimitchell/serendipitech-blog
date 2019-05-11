@@ -6,7 +6,6 @@ exports.createPages = ({ graphql, actions }) => {
   return graphql(`
     {
       allAirtable(filter: {
-        table: {eq: "Pages"},
         data: {Published: {eq: true}}
       }) {
         edges {
@@ -14,6 +13,7 @@ exports.createPages = ({ graphql, actions }) => {
             table
             data {
               Slug
+              URL
             }
           }
         }
@@ -25,13 +25,22 @@ exports.createPages = ({ graphql, actions }) => {
     }
     
     result.data.allAirtable.edges.forEach(({ node }) => {
-      createPage({
-        path: node.data.Slug,
-        component: path.resolve(`./src/templates/Page.js`),
-        context: {
-          slug: node.data.Slug,
-        },
-      })
+      const isPage = (node.table === 'Posts')
+      
+      // Don't generate post pages for outbound links
+      const isPost = (node.table === 'Posts' && !node.data.URL)
+      
+      if ( node.data.Slug && (isPost || isPage )) {  
+        createPage({
+          path: node.data.Slug,
+          component: isPost
+            ? path.resolve(`./src/templates/Post.js`)
+            : path.resolve(`./src/templates/Page.js`),
+          context: {
+            slug: node.data.Slug,
+          },
+        })
+      }
     })
   })
 }

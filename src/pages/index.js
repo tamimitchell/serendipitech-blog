@@ -1,22 +1,63 @@
 import React from "react"
 import { Link } from "gatsby"
+import { graphql } from 'gatsby'
 
 import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
 
-const IndexPage = () => (
+const IndexPage = ({ data }) => {
+  console.log(data)
+  const posts = data.allAirtable.edges
+  
+  return (
   <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
+    <h1>Serendipitech</h1>
+    <br />
+    
+    { posts.map(({ node }) => (
+      <div>
+        { node.data.URL &&
+          <div>
+            <h2><a href={ node.data.URL }>{ node.data.Title } &nbsp;&nbsp;&nbsp; >>></a></h2> 
+            <h4>{ node.data.Published_Date }</h4>
+            <div dangerouslySetInnerHTML={{ __html: node.data.Body }} />
+          </div>
+        }
+            
+        { !node.data.URL &&
+          <div>
+            <h2><Link to={ node.data.Slug }>{ node.data.Title }</Link></h2> 
+            <h4>{ node.data.Published_Date }</h4>
+            <div dangerouslySetInnerHTML={{ __html: node.data.Excerpt }} />
+          </div>
+        }
+        
+        <br />
+      </div>
+    ))}
   </Layout>
-)
+)}
 
 export default IndexPage
 
+export const pageQuery = graphql`
+  query {
+    allAirtable(filter: {
+      table: {eq: "Posts"},
+      data: {Published: {eq: true}}
+    }) {
+      edges {
+        node {
+          data {
+            Title
+            Slug
+            URL
+            Body
+            Excerpt
+            Tags
+            Published_Date
+          }
+        }
+      }
+    }
+  }
+`
