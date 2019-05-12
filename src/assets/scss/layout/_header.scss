@@ -30,7 +30,7 @@
 			border: 0;
 
 			&:active, &:hover, &:focus {
-				color: _palette(accent1, bg);
+				color: _palette(accent1, fg-light);
 			}
 		}
 
@@ -85,8 +85,8 @@
 			background-color: transparent;
 			background-image:
 				linear-gradient(
-					rgba(darken(_palette(accent1, bg), 30), 0.8),
-					rgba(darken(_palette(accent1, bg), 15), 0.3)
+					rgba(desaturate(darken(_palette(accent1, bg), 35), 10), 0.8),
+					rgba(desaturate(darken(_palette(accent1, bg), 20), 20), 0.3)
 				);
 			box-shadow: none;
 			color: _palette(bg);

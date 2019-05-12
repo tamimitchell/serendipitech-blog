@@ -12,7 +12,7 @@ const Banner = ({ siteTitle, tags }) => (
       <p>Dolor sit amet nullam pede semper est, vitae luctus metus libero eu augue. Morbi purus sed libero, faucibus adipiscing, commodo.</p>
     </div>
 
-    <Tags tags={ tags } allPosts={ true } />
+    <div id="tags"><Tags tags={ tags } allPosts={ true } /></div>
   </section>
 )
 
