@@ -192,6 +192,29 @@
 		text-align: right;
 	}
 
+
+	.tag-list {
+		a {
+			text-decoration: none;
+		}
+
+		&.accent1 a {
+			color: _palette(accent1, bg);
+		}
+
+		&.accent2 a {
+			color: _palette(accent2, bg);
+		}
+
+		&.accent3 a {
+			color: _palette(accent3, bg);
+		}
+
+		&.accent4 a {
+			color: _palette(accent4, bg);
+		}
+	}
+
 	@mixin color-typography($p: null) {
 		$highlight: _palette($p, highlight);
 

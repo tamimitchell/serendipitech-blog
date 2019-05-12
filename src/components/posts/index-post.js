@@ -1,18 +1,20 @@
 import PropTypes from "prop-types"
 import React from "react"
+import Img from "gatsby-image";
 
 import LinkedIndexPost from "./linked-index-post"
 import InternalIndexPost from "./internal-index-post"
 
 const IndexPost = ({ data, styleClass, colorMap }) => {
   styleClass += " " + colorMap[data.Category]
-  console.log(styleClass)
 
   return (
-    <article id="one" className={ `${styleClass} spotlight` }>
+    <article className={ `${styleClass} spotlight` }>
       <div className="inner">
-        <div className="image" data-position="top right">
-          <img src="images/pic01.jpg" alt="" />
+        <div className="image">
+          { data.Image &&
+            <Img alt={ data.Title } fluid={ data.Image.localFiles[0].childImageSharp.fluid } />
+          }
         </div>
 
         <h2 dangerouslySetInnerHTML={{ __html: data.Callout }} />
@@ -21,13 +23,17 @@ const IndexPost = ({ data, styleClass, colorMap }) => {
           <LinkedIndexPost
             title={ data.Title }
             url={ data.URL }
-            body={ data.Body } /> }
+            body={ data.Body.childMarkdownRemark.html }
+            tags={ data.Tags }
+            styleClass={ styleClass } /> }
 
-        { !data.URL &&
+        { !data.URL && data.Excerpt &&
           <InternalIndexPost
             title={ data.Title }
             slug={ data.Slug }
-            excerpt={ data.Excerpt } /> }
+            excerpt={ data.Excerpt.childMarkdownRemark.html }
+            tags={ data.Tags }
+            styleClass={ styleClass } /> }
       </div>
     </article>
 )}
@@ -44,7 +50,7 @@ IndexPost.propTypes = {
     Excerpt: PropTypes.string,
     Category: PropTypes.string,
     Tags: PropTypes.array,
-    Image: PropTypes.string,
+    Image: PropTypes.object,
     Published_Date: PropTypes.string,
   })
 }

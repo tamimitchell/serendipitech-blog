@@ -6,6 +6,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -36,16 +37,28 @@ module.exports = {
           {
             baseId: 'appVnUKL6MmGK4KIG',
             tableName: 'Posts',
-            tableView: 'Published'
+            tableView: 'Published',
+            tableLinks: [`Tags`],
+            mapping: {
+              Body: 'text/markdown',
+              Excerpt: 'text/markdown',
+              Image: `fileNode`
+            }
           },
           {
             baseId: 'appVnUKL6MmGK4KIG',
             tableName: 'Pages',
-            tableView: 'Published'
+            tableView: 'Published',
+            mapping: {
+              Body: 'text/markdown',
+              Excerpt: 'text/markdown',
+              Image: `fileNode`
+            }
           },
           {
             baseId: 'appVnUKL6MmGK4KIG',
             tableName: 'Tags',
+            tableView: 'Published'
           }
         ]
       }

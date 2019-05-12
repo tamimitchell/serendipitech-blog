@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 
 const PageTemplate = ({ data }) => {
   const page = data.airtable.data
-  
+
   return (
   <Layout>
     <h1>{ page.Title }</h1>
@@ -15,18 +15,22 @@ const PageTemplate = ({ data }) => {
 export default PageTemplate
 
 export const pageQuery = graphql`
-  query($slug: String!) {
+  query($pageSlug: String!) {
     airtable(
       table: {eq: "Pages"},
       data: {
-        Published: {eq: true}, 
-        Slug: {eq: $slug}
+        Published: {eq: true},
+        Slug: {eq: $pageSlug}
       })
       {
         data {
           Title
           Slug
-          Body
+          Body {
+            childMarkdownRemark {
+              html
+            }
+          }
         }
       }
   }

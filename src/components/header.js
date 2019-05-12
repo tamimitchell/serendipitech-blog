@@ -4,7 +4,7 @@ import React from "react"
 
 const Header = ({ siteTitle }) => (
   <header id="header" className="alt">
-    <a className="logo" href="index.html">Cascade <span>by Pixelarity</span></a>
+    <a className="logo" href="/">Serendipitech</a>
     <nav>
       <ul>
         <li>

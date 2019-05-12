@@ -1,20 +1,24 @@
 import PropTypes from "prop-types"
 import React from "react"
+import Link from "gatsby-link";
+import Tags from "./tags"
 
-const Banner = () => (
+const Banner = ({ siteTitle, tags }) => (
   <section id="banner">
+    <div></div>
     <div className="inner">
       <h1>Serendipitech</h1>
 
-      <ul className="actions special">
-        <li><a href="#one" className="button large wide scrolly-middle">Get started</a></li>
-      </ul>
+      <p>Dolor sit amet nullam pede semper est, vitae luctus metus libero eu augue. Morbi purus sed libero, faucibus adipiscing, commodo.</p>
     </div>
+
+    <Tags tags={ tags } allPosts={ true } />
   </section>
 )
 
 Banner.propTypes = {
   siteTitle: PropTypes.string,
+  tags: PropTypes.array
 }
 
 export default Banner

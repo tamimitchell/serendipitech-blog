@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import Banner from "../components/banner"
 import IndexPost from "../components/posts/index-post"
 
-const IndexPage = ({ data }) => {
+const TagTemplate = ({ data, pageContext }) => {
   const tags = data.tags.edges
   const posts = data.posts.edges
 
@@ -18,13 +18,23 @@ const IndexPage = ({ data }) => {
       const styleClass = (i % 2) === 0 ? "odd" : "even"
       return (<IndexPost key={ post.node.data.Slug } data={ post.node.data } styleClass={ styleClass }/>)
     })}
+
+    { posts.length === 0 &&
+      <section style={{ padding: 5 + 'em' }}>
+        <div className="inner">
+          <header className="major">
+          <h3>No Posts found under { pageContext.tagTitle }</h3>
+          </header>
+        </div>
+      </section>
+    }
   </Layout>
 )}
 
-export default IndexPage
+export default TagTemplate
 
 export const pageQuery = graphql`
-  query {
+  query($tagSlug: String) {
     tags: allAirtable(filter: {
       table: {eq: "Tags"},
     }) {
@@ -39,7 +49,10 @@ export const pageQuery = graphql`
     }
     posts: allAirtable(filter: {
       table: {eq: "Posts"},
-      data: {Published: {eq: true}}
+      data: {
+        Published: {eq: true},
+        Tags: {elemMatch: {data: {Slug: {eq: $tagSlug}}}}
+      }
     }) {
       edges {
         node {
