@@ -37,10 +37,16 @@ export const pageQuery = graphql`
         }
       }
     }
-    posts: allAirtable(filter: {
-      table: {eq: "Posts"},
-      data: {Published: {eq: true}}
-    }) {
+    posts: allAirtable(
+      filter: {
+        table: {eq: "Posts"},
+        data: {Published: {eq: true}}
+      }
+      sort: {
+        fields: [data___Published_Date]
+        order: DESC
+      }
+    ) {
       edges {
         node {
           data {
@@ -65,7 +71,7 @@ export const pageQuery = graphql`
                 Slug
               }
             }
-            Published_Date
+            Published_Date(formatString: "MMMM DD, YYYY")
             Image {
               localFiles {
                 childImageSharp {

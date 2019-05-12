@@ -24,6 +24,7 @@ const IndexPost = ({ data, styleClass, colorMap }) => {
             title={ data.Title }
             url={ data.URL }
             body={ data.Body.childMarkdownRemark.html }
+            publishedDate= { data.Published_Date }
             tags={ data.Tags }
             styleClass={ styleClass } /> }
 
@@ -32,6 +33,7 @@ const IndexPost = ({ data, styleClass, colorMap }) => {
             title={ data.Title }
             slug={ data.Slug }
             excerpt={ data.Excerpt.childMarkdownRemark.html }
+            publishedDate= { data.Published_Date }
             tags={ data.Tags }
             styleClass={ styleClass } /> }
       </div>
