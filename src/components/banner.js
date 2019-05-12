@@ -1,6 +1,5 @@
 import PropTypes from "prop-types"
 import React from "react"
-import Link from "gatsby-link";
 import Tags from "./tags"
 
 const Banner = ({ siteTitle, tags }) => (

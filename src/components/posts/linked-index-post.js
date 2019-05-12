@@ -7,13 +7,13 @@ const LinkedIndexPost = ({ title, url, body, publishedDate, tags, styleClass }) 
     <Tags tags={ tags } styleClass={ styleClass } />
 
     <header>
-      <h3><a href={url} target="_blank">{ title }</a></h3>
+      <h3><a href={url} target="_blank" rel="noopener noreferrer">{ title }</a></h3>
       <p>{ publishedDate }</p>
     </header>
 
     <div dangerouslySetInnerHTML={{ __html: body }} />
     <ul className="actions">
-      <li><a href={url} target="_blank" className={ `button primary ${styleClass}` }>Learn more</a></li>
+      <li><a href={url} target="_blank" rel="noopener noreferrer" className={ `button primary ${styleClass}` }>Learn more</a></li>
     </ul>
   </div>
 )
