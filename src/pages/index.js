@@ -13,9 +13,10 @@ const IndexPage = ({ data, siteTitle }) => {
   <Layout>
     <Banner siteTitle={ siteTitle }  />
 
-    { posts.map(({ node }) => (
-      <IndexPost key={ node.data.Slug } data={ node.data } />
-    ))}
+    { posts.map(( post, i ) => {
+      const styleClass = (i % 2) === 0 ? "odd" : "even"
+      return (<IndexPost key={ post.node.data.Slug } data={ post.node.data } styleClass={ styleClass }/>)
+    })}
   </Layout>
 )}
 
@@ -36,6 +37,7 @@ export const pageQuery = graphql`
             URL
             Body
             Excerpt
+            Category
             Tags
             Published_Date
           }
