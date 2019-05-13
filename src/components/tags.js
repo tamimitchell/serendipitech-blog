@@ -11,7 +11,7 @@ const Tags = ({ tags, allPosts, styleClass }) => (
       </span>
     }
 
-    { tags.map((tag, i) => {
+    { tags && tags.map((tag, i) => {
       const data = tag.node ? tag.node.data : tag.data
       return (
         <span key={ data.Slug }>

@@ -48,8 +48,8 @@ IndexPost.propTypes = {
     Callout: PropTypes.string,
     Slug: PropTypes.string,
     URL: PropTypes.string,
-    Body: PropTypes.string,
-    Excerpt: PropTypes.string,
+    Body: PropTypes.object,
+    Excerpt: PropTypes.object,
     Category: PropTypes.string,
     Tags: PropTypes.array,
     Image: PropTypes.object,
@@ -59,7 +59,7 @@ IndexPost.propTypes = {
 
 IndexPost.defaultProps = {
   colorMap: {
-    "Outdoors": "accent1",
+    "Adventure": "accent1",
     "Hardware": "accent2",
     "Software": "accent3",
     "Design": "accent4",

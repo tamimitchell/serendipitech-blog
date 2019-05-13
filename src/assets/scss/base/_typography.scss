@@ -215,6 +215,25 @@
 		}
 	}
 
+
+	.text-color {
+		&.accent1 {
+			color: _palette(accent1, bg);
+		}
+
+		&.accent2 {
+			color: _palette(accent2, bg);
+		}
+
+		&.accent3 {
+			color: _palette(accent3, bg);
+		}
+
+		&.accent4 {
+			color: _palette(accent4, bg);
+		}
+	}
+
 	@mixin color-typography($p: null) {
 		$highlight: _palette($p, highlight);
 

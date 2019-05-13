@@ -10,6 +10,7 @@ const IndexPage = ({ data }) => {
   const tags = data.tags.edges
   const posts = data.posts.edges
 
+  console.log(tags)
   return (
   <Layout>
     <Banner tags={ tags } />
@@ -25,9 +26,16 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query {
-    tags: allAirtable(filter: {
-      table: {eq: "Tags"},
-    }) {
+    tags: allAirtable(
+      filter: {
+        table: {eq: "Tags"}
+        data: {Published: {eq: true}}
+      }
+      sort: {
+        fields: [data___Slug]
+        order: ASC
+      }
+    ) {
       edges {
         node {
           data {

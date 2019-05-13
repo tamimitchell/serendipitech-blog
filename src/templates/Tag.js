@@ -35,9 +35,16 @@ export default TagTemplate
 
 export const pageQuery = graphql`
   query($tagSlug: String) {
-    tags: allAirtable(filter: {
-      table: {eq: "Tags"},
-    }) {
+    tags: allAirtable(
+      filter: {
+        table: {eq: "Tags"}
+        data: {Published: {eq: true}}
+      }
+      sort: {
+        fields: [data___Slug]
+        order: ASC
+      }
+    ) {
       edges {
         node {
           data {

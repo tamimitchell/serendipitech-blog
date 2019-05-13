@@ -8,7 +8,9 @@ const Banner = ({ siteTitle, tags }) => (
     <div className="inner">
       <h1>Serendipitech</h1>
 
-      <p>Dolor sit amet nullam pede semper est, vitae luctus metus libero eu augue. Morbi purus sed libero, faucibus adipiscing, commodo.</p>
+      <p>
+        Exploring connections between the worlds of travel, adventure, mapping, programming, and design.
+      </p>
     </div>
 
     <div id="tags"><Tags tags={ tags } allPosts={ true } /></div>
