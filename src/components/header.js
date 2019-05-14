@@ -1,4 +1,3 @@
-// import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
@@ -8,7 +7,7 @@ const Header = ({ siteTitle, headerStyle, toggleNav }) => (
     <nav>
       <ul>
         <li>
-        <a href="#menu" onClick={(e) => toggleNav(e)}>Menu</a>
+          <a href="#" onClick={(e) => toggleNav(e)}>Menu</a>
         </li>
       </ul>
     </nav>

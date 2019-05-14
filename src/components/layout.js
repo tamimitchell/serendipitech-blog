@@ -11,6 +11,7 @@ import { StaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import Nav from "./nav"
+import Footer from "./footer"
 
 import "../assets/scss/main.scss"
 
@@ -48,11 +49,7 @@ class Layout extends React.Component {
               { this.props.children }
             </main>
 
-            <footer>
-              © {new Date().getFullYear()}, Built with
-              {` `}
-              <a href="https://www.gatsbyjs.org">Gatsby</a>
-            </footer>
+            <Footer />
           </>
         )}
       />

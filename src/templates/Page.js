@@ -8,10 +8,10 @@ const PageTemplate = ({ data }) => {
 
   return (
     <Layout pages={ pages }>
-      <section id="main" class="wrapper">
-        <div class="inner">
+      <section id="main" className="wrapper">
+        <div className="inner">
 
-          <header class="major">
+          <header className="major">
             <h1>{ page.Title }</h1>
           </header>
 

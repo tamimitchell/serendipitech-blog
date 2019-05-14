@@ -26,7 +26,7 @@ InternalIndexPost.propTypes = {
   slug: PropTypes.string,
   excerpt: PropTypes.string,
   publishedDate: PropTypes.string,
-  tags: PropTypes.object,
+  tags: PropTypes.array,
   styleClass: PropTypes.string
 }
 

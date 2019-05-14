@@ -23,7 +23,7 @@ LinkedIndexPost.propTypes = {
   url: PropTypes.string,
   body: PropTypes.string,
   publishedDate: PropTypes.string,
-  tags: PropTypes.object,
+  tags: PropTypes.array,
   styleClass: PropTypes.string
 }
 
