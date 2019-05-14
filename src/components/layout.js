@@ -28,7 +28,6 @@ class Layout extends React.Component {
   }
 
   render() {
-    console.log(this.props.pages)
     return (
       <StaticQuery
         query={graphql`
@@ -42,7 +41,7 @@ class Layout extends React.Component {
         `}
         render={data => (
           <>
-            <Header siteTitle={ data.site.siteMetadata.title } toggleNav={ this.toggleNav } />
+            <Header siteTitle={ data.site.siteMetadata.title } headerStyle={ this.props.headerStyle } toggleNav={ this.toggleNav } />
             <Nav pages={ this.props.pages } showNav={ this.state.showNav } toggleNav={ this.toggleNav } />
 
             <main>

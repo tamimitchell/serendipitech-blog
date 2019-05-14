@@ -2,8 +2,8 @@
 import PropTypes from "prop-types"
 import React from "react"
 
-const Header = ({ siteTitle, toggleNav }) => (
-  <header id="header" className="alt">
+const Header = ({ siteTitle, headerStyle, toggleNav }) => (
+  <header id="header" className={ headerStyle }>
     <a className="logo" href="/">Serendipitech</a>
     <nav>
       <ul>
@@ -17,6 +17,7 @@ const Header = ({ siteTitle, toggleNav }) => (
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
+  headerStyle: PropTypes.string,
   toggleNav: PropTypes.func
 }
 

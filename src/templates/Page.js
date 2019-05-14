@@ -7,11 +7,20 @@ const PageTemplate = ({ data }) => {
   const pages = data.pages.edges
 
   return (
-  <Layout pages={ pages }>
-    <h1>{ page.Title }</h1>
-    <div dangerouslySetInnerHTML={{ __html: page.Body }} />
-  </Layout>
-)}
+    <Layout pages={ pages }>
+      <section id="main" class="wrapper">
+        <div class="inner">
+
+          <header class="major">
+            <h1>{ page.Title }</h1>
+          </header>
+
+          <div dangerouslySetInnerHTML={{ __html: page.Body.childMarkdownRemark.html }} />
+        </div>
+      </section>
+    </Layout>
+  )
+}
 
 export default PageTemplate
 

@@ -12,7 +12,7 @@ const IndexPage = ({ data }) => {
   const posts = data.posts.edges
 
   return (
-  <Layout pages={ pages } >
+  <Layout pages={ pages } headerStyle="alt" >
     <Banner tags={ tags } />
 
     { posts.map(( post, i ) => {

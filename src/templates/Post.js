@@ -7,11 +7,20 @@ const PostTemplate = ({ data }) => {
   const pages = data.pages.edges
 
   return (
-  <Layout pages={ pages }>
-    <h1>{ post.Title }</h1>
-    <div dangerouslySetInnerHTML={{ __html: post.Body }} />
-  </Layout>
-)}
+    <Layout pages={ pages }>
+      <section id="main" class="wrapper">
+        <div class="inner">
+
+          <header class="major">
+            <h1>{ post.Title }</h1>
+          </header>
+
+          <div dangerouslySetInnerHTML={{ __html: post.Body.childMarkdownRemark.html }} />
+        </div>
+      </section>
+    </Layout>
+  )
+}
 
 export default PostTemplate
 
