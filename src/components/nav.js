@@ -1,14 +1,24 @@
-// import { Link } from "gatsby"
+import { Link } from "gatsby"
 import React from "react"
+import PropTypes from "prop-types"
 
-const Nav = () => (
-  <nav id="menu">
+const Nav = ({ pages, showNav, toggleNav }) => (
+  <nav id="menu" className={showNav ? "visible" : ""}>
     <ul className="links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="generic.html">Generic</a></li>
-      <li><a href="elements.html">Elements</a></li>
+
+      <li><Link to="/">Home</Link></li>
+      { pages && pages.map(({node}) => {
+        return (<li><Link to={ node.data.Slug }>{ node.data.Title }</Link></li>)
+      })}
     </ul>
+    <a href="#" className="close" onClick={(e) => toggleNav(e)}></a>
   </nav>
 )
+
+Nav.propTypes = {
+  pages: PropTypes.array,
+  showNav: PropTypes.bool,
+  toggleNav: PropTypes.func
+}
 
 export default Nav

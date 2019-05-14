@@ -3,10 +3,11 @@ import Layout from "../components/layout"
 import { graphql } from 'gatsby'
 
 const PageTemplate = ({ data }) => {
-  const page = data.airtable.data
+  const page = data.page.data
+  const pages = data.pages.edges
 
   return (
-  <Layout>
+  <Layout pages={ pages }>
     <h1>{ page.Title }</h1>
     <div dangerouslySetInnerHTML={{ __html: page.Body }} />
   </Layout>
@@ -16,7 +17,22 @@ export default PageTemplate
 
 export const pageQuery = graphql`
   query($pageSlug: String!) {
-    airtable(
+    pages: allAirtable(
+      filter: {
+        table: {eq: "Pages"}
+        data: {Published: {eq: true}}
+      }
+    ) {
+      edges {
+        node {
+          data {
+            Title
+            Slug
+          }
+        }
+      }
+    }
+    page: airtable(
       table: {eq: "Pages"},
       data: {
         Published: {eq: true},

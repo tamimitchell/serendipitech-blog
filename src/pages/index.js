@@ -8,11 +8,11 @@ import IndexPost from "../components/posts/index-post"
 
 const IndexPage = ({ data }) => {
   const tags = data.tags.edges
+  const pages = data.pages.edges
   const posts = data.posts.edges
 
-  console.log(tags)
   return (
-  <Layout>
+  <Layout pages={ pages } >
     <Banner tags={ tags } />
 
     { posts.map(( post, i ) => {
@@ -34,6 +34,21 @@ export const pageQuery = graphql`
       sort: {
         fields: [data___Slug]
         order: ASC
+      }
+    ) {
+      edges {
+        node {
+          data {
+            Title
+            Slug
+          }
+        }
+      }
+    }
+    pages: allAirtable(
+      filter: {
+        table: {eq: "Pages"}
+        data: {Published: {eq: true}}
       }
     ) {
       edges {

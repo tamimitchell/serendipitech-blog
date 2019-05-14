@@ -27,7 +27,7 @@ exports.createPages = ({ graphql, actions }) => {
 
     result.data.allAirtable.edges.forEach(({ node }) => {
       const isTag = (node.table === 'Tags')
-      const isPage = (node.table === 'Posts')
+      const isPage = (node.table === 'Pages')
 
       // Don't generate post pages for outbound links
       const isPost = (node.table === 'Posts' && !node.data.URL)

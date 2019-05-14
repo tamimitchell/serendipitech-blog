@@ -2,21 +2,37 @@ import React from "react"
 import Layout from "../components/layout"
 import { graphql } from 'gatsby'
 
-const PageTemplate = ({ data }) => {
-  const page = data.airtable.data
+const PostTemplate = ({ data }) => {
+  const post = data.post.data
+  const pages = data.pages.edges
 
   return (
-  <Layout>
-    <h1>{ page.Title }</h1>
-    <div dangerouslySetInnerHTML={{ __html: page.Body }} />
+  <Layout pages={ pages }>
+    <h1>{ post.Title }</h1>
+    <div dangerouslySetInnerHTML={{ __html: post.Body }} />
   </Layout>
 )}
 
-export default PageTemplate
+export default PostTemplate
 
 export const pageQuery = graphql`
   query($pageSlug: String!) {
-    airtable(
+    pages: allAirtable(
+      filter: {
+        table: {eq: "Pages"}
+        data: {Published: {eq: true}}
+      }
+    ) {
+      edges {
+        node {
+          data {
+            Title
+            Slug
+          }
+        }
+      }
+    }
+    post: airtable(
       table: {eq: "Posts"},
       data: {
         Published: {eq: true},
