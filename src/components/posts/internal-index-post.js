@@ -14,7 +14,7 @@ const InternalIndexPost = ({ title, slug, excerpt, publishedDate, tags, styleCla
 
     <div dangerouslySetInnerHTML={{ __html: excerpt }} />
     <ul className="actions">
-      <li><Link to={ slug } className={ `button primary ${styleClass}` }>Learn more</Link></li>
+      <li><Link to={ slug } className={ `button primary ${styleClass}` }>Read more</Link></li>
 
 
     </ul>
