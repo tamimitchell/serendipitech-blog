@@ -13,7 +13,7 @@ const LinkedIndexPost = ({ title, url, body, publishedDate, tags, styleClass }) 
 
     <div dangerouslySetInnerHTML={{ __html: body }} />
     <ul className="actions">
-      <li><a href={url} target="_blank" rel="noopener noreferrer" className={ `button primary ${styleClass}` }>Read more </a></li>
+      <li><a href={url} target="_blank" rel="noopener noreferrer" className={ `button primary ${styleClass}` }>Visit Site</a></li>
     </ul>
   </div>
 )
