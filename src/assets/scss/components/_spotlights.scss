@@ -59,6 +59,11 @@
 			width: 55%;
 		}
 
+		// Markdown content images
+		img {
+			max-width: 100%;
+		}
+
 		&.odd {
 			.image {
 				right: 0;
