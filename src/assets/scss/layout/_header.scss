@@ -28,9 +28,27 @@
 			text-decoration: none;
 			text-transform: uppercase;
 			border: 0;
+			position: relative;
+
+			&:before, &:after {
+				content: '';
+				position: absolute;
+				transition: transform .15s ease;
+			}
+
+			&:before {
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				height: 2px;
+				background: #fff;
+				transform: scaleX(0);
+			}
 
 			&:active, &:hover, &:focus {
-				color: _palette(accent1, fg-light);
+				&:hover:before {
+					transform: scaleX(1);
+				}
 			}
 		}
 
@@ -82,11 +100,11 @@
 		}
 
 		&.alt {
-			background-color: transparent;
+			background-color: _palette(accent1, bg);
 			background-image:
 				linear-gradient(
-					rgba(desaturate(darken(_palette(accent1, bg), 35), 10), 0.8),
-					rgba(desaturate(darken(_palette(accent1, bg), 20), 20), 0.3)
+					darken(_palette(accent1, bg), 15),
+					darken(_palette(accent1, bg), 10)
 				);
 			box-shadow: none;
 			color: _palette(bg);
