@@ -1,5 +1,6 @@
 import PropTypes from "prop-types"
 import React from "react"
+import Link from "gatsby-link";
 import Img from "gatsby-image";
 
 import LinkedIndexPost from "./linked-index-post"
@@ -17,7 +18,8 @@ const IndexPost = ({ data, styleClass, colorMap }) => {
           }
         </div>
 
-        <h2 dangerouslySetInnerHTML={{ __html: data.Callout }} />
+        { data.URL &&
+          <h2><a href={ data.URL } target="_blank" rel="noopener noreferrer">{ data.Callout }</a></h2>}
 
         { data.URL &&
           <LinkedIndexPost
@@ -27,6 +29,9 @@ const IndexPost = ({ data, styleClass, colorMap }) => {
             publishedDate= { data.Published_Date }
             tags={ data.Tags }
             styleClass={ styleClass } /> }
+
+        { !data.URL && data.Excerpt &&
+          <h2><Link to={ data.Slug }>{ data.Callout }</Link></h2>}
 
         { !data.URL && data.Excerpt &&
           <InternalIndexPost

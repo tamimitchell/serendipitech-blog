@@ -53,12 +53,22 @@
 
 	p {
 		margin: 0 0 _size(element-margin) 0;
+
+		&::selection {
+			color: #eee;
+			background: rebeccapurple;
+		}
 	}
 
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: _font(weight-light);
 		line-height: 1.4;
 		margin: 0 0 (_size(element-margin) * 0.6) 0;
+
+		&::selection {
+			color: #eee;
+			background: rebeccapurple;
+		}
 
 		a {
 			color: inherit;
