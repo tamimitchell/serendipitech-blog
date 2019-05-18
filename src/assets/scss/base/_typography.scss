@@ -36,10 +36,10 @@
 
 	a {
 		@include vendor('transition', 'color #{_duration(transition)}');
-		text-decoration: underline;
+		text-decoration: none;
 
 		&:active, &:focus, &:hover {
-			text-decoration: none;
+			text-decoration: underline;
 		}
 	}
 
@@ -155,6 +155,10 @@
 		font-style: italic;
 		margin: 0 0 _size(element-margin) 0;
 		padding: (_size(element-margin) / 4) 0 (_size(element-margin) / 4) _size(element-margin);
+
+		p {
+			margin-bottom: (_size(element-margin) / 4);
+		}
 	}
 
 	code {
@@ -206,6 +210,10 @@
 	.tag-list {
 		a {
 			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
 		}
 
 		&.accent1 a {
