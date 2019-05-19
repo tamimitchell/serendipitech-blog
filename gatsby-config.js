@@ -35,6 +35,16 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+    resolve: `gatsby-plugin-netlify-headers`,
+      options: {
+        headers: {
+          "/*": [
+            "Cache-Control: public, max-age=360000",
+          ],
+        }
+      }
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,
