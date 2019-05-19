@@ -13,7 +13,7 @@ const TagTemplate = ({ data, pageContext }) => {
   const posts = data.posts.edges
 
   return (
-  <Layout pages={ pages }>
+  <Layout pages={ pages }  headerStyle="alt">
     <SEO title={ pageContext.tagTitle } />
 
     <Banner tags={ tags } />
