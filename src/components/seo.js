@@ -53,6 +53,14 @@ function SEO({ description, lang, meta, keywords, title }) {
           content: metaDescription,
         },
         {
+          property: `og:url`,
+          content: site.siteMetadata.url,
+        },
+        {
+          property: `fb:app_id`,
+          content: '322835398631029',
+        },
+        {
           property: `og:image`,
           content: siteImage,
         },
