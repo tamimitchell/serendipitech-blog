@@ -3,6 +3,7 @@ import React from "react"
 import { graphql } from 'gatsby'
 
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 import Banner from "../components/banner"
 import IndexPost from "../components/posts/index-post"
 
@@ -13,6 +14,8 @@ const TagTemplate = ({ data, pageContext }) => {
 
   return (
   <Layout pages={ pages }>
+    <SEO title={ pageContext.tagTitle } />
+
     <Banner tags={ tags } />
 
     { posts.map(( post, i ) => {

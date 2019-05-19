@@ -1,5 +1,6 @@
 import React from "react"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 import { graphql } from 'gatsby'
 
 const PostTemplate = ({ data }) => {
@@ -8,6 +9,8 @@ const PostTemplate = ({ data }) => {
 
   return (
     <Layout pages={ pages }>
+      <SEO title={ post.Title } />
+
       <section id="main" className="wrapper">
         <div className="inner">
 
