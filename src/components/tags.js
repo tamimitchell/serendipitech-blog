@@ -16,7 +16,7 @@ const Tags = ({ tags, allPosts, styleClass }) => (
       return (
         <span key={ data.Slug }>
           &nbsp;
-          <Link to={ `${data.Slug}#tags` }>{ data.Title }</Link>
+          <Link to={ `/${data.Slug}#tags` }>{ data.Title }</Link>
           { i !== (tags.length - 1) &&
             <strong>&nbsp; &#124;</strong> }
         </span>

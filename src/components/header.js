@@ -7,7 +7,7 @@ const Header = ({ siteTitle, headerStyle, toggleNav }) => (
     <nav>
       <ul>
         <li>
-          <a href="#" onClick={(e) => toggleNav(e)}>Menu</a>
+          <button href="#" onClick={(e) => toggleNav(e)}>Menu</button>
         </li>
       </ul>
     </nav>

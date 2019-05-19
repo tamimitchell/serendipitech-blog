@@ -43,6 +43,10 @@
 						letter-spacing: _size(letter-spacing-alt);
 						line-height: 3.5rem;
 						text-decoration: none;
+
+						&:hover {
+							color: _palette(accent2, fg-bold);
+						}
 					}
 
 					> .button {
@@ -76,6 +80,8 @@
 			top: 0;
 			vertical-align: middle;
 			width: 7rem;
+			box-shadow: none;
+			outline: none;
 
 			&:before {
 				content: '\f00d';
@@ -84,6 +90,7 @@
 
 			&:hover {
 				color: _palette(accent2, fg-bold);
+				background: none;
 			}
 
 			@include breakpoint('<=small') {

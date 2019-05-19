@@ -8,10 +8,10 @@ const Nav = ({ pages, showNav, toggleNav }) => (
 
       <li><Link to="/">Home</Link></li>
       { pages && pages.map(({node}) => {
-        return (<li key={ node.data.Slug }><Link to={ node.data.Slug }>{ node.data.Title }</Link></li>)
+        return (<li key={ node.data.Slug }><Link to={`/${ node.data.Slug }`}>{ node.data.Title }</Link></li>)
       })}
     </ul>
-    <a href="#" className="close" onClick={(e) => toggleNav(e)}></a>
+    <button href="#" className="close" onClick={(e) => toggleNav(e)}></button>
   </nav>
 )
 
