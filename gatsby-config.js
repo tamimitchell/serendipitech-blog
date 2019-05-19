@@ -7,6 +7,7 @@ module.exports = {
     title: `SerendipiTech`,
     description: `Exploring connections between the worlds of travel, adventure, mapping, programming, and design.`,
     author: `Tami Mitchell`,
+    url: 'https://blog.serendipi.tech'
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
